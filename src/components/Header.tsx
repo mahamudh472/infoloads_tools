@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Search, Moon, Sun, Menu, X, ChevronDown, Sparkles } from "lucide-react";
 
+import Link from "next/link";
+
 interface HeaderProps {
   onOpenSearch: () => void;
   onOpenSignIn: () => void;
@@ -55,13 +57,13 @@ export default function Header({ onOpenSearch, onOpenSignIn }: HeaderProps) {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 group">
           <Image
             src="/infoloads-logo/logo mark/infoloads-mark.svg"
             alt="InfoLoads Mark"
             width={32}
             height={32}
-            className="h-8 w-auto"
+            className="h-8 w-auto transition-transform group-hover:scale-105"
             priority
           />
           <Image
@@ -72,17 +74,20 @@ export default function Header({ onOpenSearch, onOpenSignIn }: HeaderProps) {
             className="h-[26px] w-auto dark:invert"
             priority
           />
-        </div>
+        </Link>
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#categories" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/tools" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Tools
-          </a>
-          <a href="#ai-tools" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          </Link>
+          <button 
+            onClick={onOpenSearch}
+            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             AI Tools
             <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
-          </a>
+          </button>
           <a href="#blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Blog
           </a>

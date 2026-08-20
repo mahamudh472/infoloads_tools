@@ -8,13 +8,15 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SearchOverlay from "@/components/SearchOverlay";
-import ToolPlayground from "@/components/ToolPlayground";
 import SignInModal from "@/components/SignInModal";
 
+import { useRouter } from "next/navigation";
+import { TOOLS } from "@/data/tools";
+
 export default function Home() {
+  const router = useRouter();
   const [searchOpen, setSearchOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
-  const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [searchCategory, setSearchCategory] = useState("all");
 
   const handleOpenSearch = (category = "all") => {
@@ -23,7 +25,10 @@ export default function Home() {
   };
 
   const handleSelectTool = (toolId: string) => {
-    setSelectedToolId(toolId);
+    const tool = TOOLS.find((t) => t.id === toolId || t.slug === toolId);
+    if (tool) {
+      router.push(`/tools/${tool.categorySlug || "developer-tools"}/${tool.slug}`);
+    }
   };
 
   const handleExploreAI = () => {
@@ -73,12 +78,6 @@ export default function Home() {
         onClose={() => setSearchOpen(false)}
         onSelectTool={handleSelectTool}
         initialCategory={searchCategory}
-      />
-
-      {/* Tool Playground Modal (For interacting with working tools) */}
-      <ToolPlayground
-        toolId={selectedToolId}
-        onClose={() => setSelectedToolId(null)}
       />
 
       {/* Sign In Flow Modal */}
