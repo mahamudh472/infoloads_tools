@@ -4,7 +4,7 @@ import {
   getCategoryBySlug,
   getToolBySlug,
   getToolsByCategory,
-} from "@/data/tools";
+} from "@/lib/tools";
 
 interface Props {
   params: Promise<{

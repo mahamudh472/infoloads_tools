@@ -1,104 +1,4 @@
-export interface Tool {
-  id: string;
-  name: string;
-  category: string;
-  categorySlug: string;
-  description: string;
-  shortDesc?: string;
-  slug: string;
-  popular?: boolean;
-  iconName: string;
-  iconSymbol?: string; // e.g. "{}"
-  aboutTitle?: string;
-  aboutText?: string;
-  features?: string[];
-  sampleInput?: string;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  description: string;
-  countText: string;
-  iconName: string;
-  colorClass: string; // Tailwind bg color for icon wrapper
-  iconColorClass: string; // Tailwind text color for icon
-}
-
-export const CATEGORIES: Category[] = [
-  {
-    id: "developer-tools",
-    name: "Developer Tools",
-    description: "Essential developer utilities to write, test and debug code more efficiently.",
-    countText: "18 tools",
-    iconName: "Code2",
-    colorClass: "bg-purple-100 dark:bg-purple-950/40",
-    iconColorClass: "text-purple-600 dark:text-purple-400",
-  },
-  {
-    id: "text-tools",
-    name: "Text Tools",
-    description: "Edit, format and analyze your text easily.",
-    countText: "12 tools",
-    iconName: "Type",
-    colorClass: "bg-purple-100 dark:bg-purple-950/40",
-    iconColorClass: "text-purple-600 dark:text-purple-400",
-  },
-  {
-    id: "image-tools",
-    name: "Image Tools",
-    description: "Compress, convert and optimize images.",
-    countText: "15 tools",
-    iconName: "Image",
-    colorClass: "bg-green-100 dark:bg-green-950/40",
-    iconColorClass: "text-green-600 dark:text-green-400",
-  },
-  {
-    id: "pdf-tools",
-    name: "PDF Tools",
-    description: "Merge, split, convert and work with PDFs.",
-    countText: "20 tools",
-    iconName: "FileText",
-    colorClass: "bg-red-100 dark:bg-red-950/40",
-    iconColorClass: "text-red-600 dark:text-red-400",
-  },
-  {
-    id: "converters",
-    name: "Converters",
-    description: "Convert units, data, time and more.",
-    countText: "25 tools",
-    iconName: "ArrowLeftRight",
-    colorClass: "bg-amber-100 dark:bg-amber-950/40",
-    iconColorClass: "text-amber-600 dark:text-amber-400",
-  },
-  {
-    id: "calculators",
-    name: "Calculators",
-    description: "Smart calculators for daily use and beyond.",
-    countText: "17 tools",
-    iconName: "Calculator",
-    colorClass: "bg-rose-100 dark:bg-rose-950/40",
-    iconColorClass: "text-rose-600 dark:text-rose-400",
-  },
-  {
-    id: "data-tools",
-    name: "Data Tools",
-    description: "Work with JSON, CSV, XML and more.",
-    countText: "14 tools",
-    iconName: "Database",
-    colorClass: "bg-cyan-100 dark:bg-cyan-950/40",
-    iconColorClass: "text-cyan-600 dark:text-cyan-400",
-  },
-  {
-    id: "web-tools",
-    name: "Web Tools",
-    description: "SEO, domain, and website utility tools.",
-    countText: "13 tools",
-    iconName: "Globe",
-    colorClass: "bg-indigo-100 dark:bg-indigo-950/40",
-    iconColorClass: "text-indigo-600 dark:text-indigo-400",
-  },
-];
+import { Tool } from "@/types/tool";
 
 export const TOOLS: Tool[] = [
   // Developer Tools
@@ -114,7 +14,8 @@ export const TOOLS: Tool[] = [
     iconName: "Code2",
     iconSymbol: "{}",
     aboutTitle: "About JSON Formatter",
-    aboutText: "This JSON formatter helps you to format, validate and beautify JSON data. It's useful for developers to read and analyze JSON data in a better way.",
+    aboutText:
+      "This JSON formatter helps you to format, validate and beautify JSON data. It's useful for developers to read and analyze JSON data in a better way.",
     features: [
       "Formats and indents JSON",
       "Validates JSON syntax",
@@ -134,7 +35,8 @@ export const TOOLS: Tool[] = [
     popular: true,
     iconName: "ShieldCheck",
     aboutTitle: "About JSON Validator",
-    aboutText: "Validate JSON syntax and detect syntax errors, broken brackets, and malformed structures with precision.",
+    aboutText:
+      "Validate JSON syntax and detect syntax errors, broken brackets, and malformed structures with precision.",
     features: [
       "Real-time syntax validation",
       "Exact line & column error pinpointing",
@@ -153,7 +55,8 @@ export const TOOLS: Tool[] = [
     slug: "base64-encoder",
     iconName: "FileText",
     aboutTitle: "About Base64 Encoder",
-    aboutText: "Quickly convert any UTF-8 text string or ASCII content into a standard Base64 encoded representation.",
+    aboutText:
+      "Quickly convert any UTF-8 text string or ASCII content into a standard Base64 encoded representation.",
     features: [
       "Instant Base64 encoding",
       "UTF-8 & Unicode support",
@@ -172,7 +75,8 @@ export const TOOLS: Tool[] = [
     slug: "base64-decoder",
     iconName: "FileText",
     aboutTitle: "About Base64 Decoder",
-    aboutText: "Safely decode any Base64 encoded string back to original plain text and inspect the data structure.",
+    aboutText:
+      "Safely decode any Base64 encoded string back to original plain text and inspect the data structure.",
     features: [
       "Decodes Base64 to plain text",
       "Handles URL-safe Base64 strings",
@@ -191,7 +95,8 @@ export const TOOLS: Tool[] = [
     slug: "url-encoder",
     iconName: "Network",
     aboutTitle: "About URL Encoder",
-    aboutText: "Converts characters that are not allowed in URLs into valid percent-encoded format according to RFC 3986.",
+    aboutText:
+      "Converts characters that are not allowed in URLs into valid percent-encoded format according to RFC 3986.",
     features: [
       "Full URI and Component encoding",
       "Protects query strings and parameters",
@@ -210,7 +115,8 @@ export const TOOLS: Tool[] = [
     slug: "url-decoder",
     iconName: "Network",
     aboutTitle: "About URL Decoder",
-    aboutText: "Replaces percent-encoded triples in URL query strings with their human-readable ASCII and UTF-8 characters.",
+    aboutText:
+      "Replaces percent-encoded triples in URL query strings with their human-readable ASCII and UTF-8 characters.",
     features: [
       "Decodes percent-encoded URIs",
       "Supports UTF-8 encoded sequences",
@@ -229,7 +135,8 @@ export const TOOLS: Tool[] = [
     slug: "html-encoder",
     iconName: "Code",
     aboutTitle: "About HTML Encoder",
-    aboutText: "Escape HTML characters like <, >, &, and quotes to prevent XSS vulnerabilities and display raw markup safely.",
+    aboutText:
+      "Escape HTML characters like <, >, &, and quotes to prevent XSS vulnerabilities and display raw markup safely.",
     features: [
       "Escapes HTML tags and characters",
       "Named & numeric entity options",
@@ -248,7 +155,8 @@ export const TOOLS: Tool[] = [
     slug: "html-decoder",
     iconName: "Code",
     aboutTitle: "About HTML Decoder",
-    aboutText: "Unescape HTML entity codes (such as &lt;, &gt;, &amp;, &quot;) back into original HTML characters.",
+    aboutText:
+      "Unescape HTML entity codes (such as &lt;, &gt;, &amp;, &quot;) back into original HTML characters.",
     features: [
       "Unescapes HTML entity codes",
       "Supports named and hex entities",
@@ -267,7 +175,8 @@ export const TOOLS: Tool[] = [
     slug: "javascript-minifier",
     iconName: "Cpu",
     aboutTitle: "About JavaScript Minifier",
-    aboutText: "Strips unnecessary comments, whitespace, and formatting from JavaScript code to optimize load times and bandwidth.",
+    aboutText:
+      "Strips unnecessary comments, whitespace, and formatting from JavaScript code to optimize load times and bandwidth.",
     features: [
       "Removes comments and blank lines",
       "Minifies functions and objects",
@@ -286,7 +195,8 @@ export const TOOLS: Tool[] = [
     slug: "css-minifier",
     iconName: "Sparkles",
     aboutTitle: "About CSS Minifier",
-    aboutText: "Removes unnecessary spaces, indentation, line breaks, and comments from CSS stylesheets to maximize performance.",
+    aboutText:
+      "Removes unnecessary spaces, indentation, line breaks, and comments from CSS stylesheets to maximize performance.",
     features: [
       "Strips CSS comments & whitespace",
       "Optimizes selectors and rules",
@@ -341,7 +251,8 @@ export const TOOLS: Tool[] = [
     slug: "html-formatter",
     iconName: "FileCode",
     aboutTitle: "About HTML Formatter",
-    aboutText: "Clean up messy or minified HTML code with customizable indentation and tag formatting.",
+    aboutText:
+      "Clean up messy or minified HTML code with customizable indentation and tag formatting.",
     features: [
       "Cleans up indentation",
       "Auto-formats nested tags",
@@ -359,7 +270,8 @@ export const TOOLS: Tool[] = [
     slug: "xml-to-json",
     iconName: "Database",
     aboutTitle: "About XML to JSON Converter",
-    aboutText: "Transform complex XML trees and attributes into structured, standardized JSON payloads.",
+    aboutText:
+      "Transform complex XML trees and attributes into structured, standardized JSON payloads.",
     features: [
       "Parses XML attributes and nodes",
       "Generates valid JSON",
@@ -379,7 +291,8 @@ export const TOOLS: Tool[] = [
     popular: true,
     iconName: "Type",
     aboutTitle: "About Word Counter",
-    aboutText: "Analyze text statistics in real time including word count, character count without spaces, sentence length, and estimated reading time.",
+    aboutText:
+      "Analyze text statistics in real time including word count, character count without spaces, sentence length, and estimated reading time.",
     features: [
       "Live word and character count",
       "Reading time calculation",
@@ -397,7 +310,8 @@ export const TOOLS: Tool[] = [
     slug: "case-converter",
     iconName: "Baseline",
     aboutTitle: "About Case Converter",
-    aboutText: "Easily switch your text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.",
+    aboutText:
+      "Easily switch your text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.",
     features: [
       "Multiple case styles",
       "One-click transformations",
@@ -415,7 +329,8 @@ export const TOOLS: Tool[] = [
     slug: "markdown-previewer",
     iconName: "FileText",
     aboutTitle: "About Markdown Live Previewer",
-    aboutText: "Edit GitHub-flavored Markdown on the left and see clean HTML rendered styling in real-time on the right.",
+    aboutText:
+      "Edit GitHub-flavored Markdown on the left and see clean HTML rendered styling in real-time on the right.",
     features: [
       "GFM tables, code blocks, task lists",
       "Instant live render",
@@ -435,7 +350,8 @@ export const TOOLS: Tool[] = [
     popular: true,
     iconName: "Image",
     aboutTitle: "About Image Compressor",
-    aboutText: "Shrink image file sizes without compromising visual quality, fully in your browser without uploading to any server.",
+    aboutText:
+      "Shrink image file sizes without compromising visual quality, fully in your browser without uploading to any server.",
     features: [
       "JPG, PNG, WebP compression",
       "Adjustable quality slider",
@@ -454,7 +370,8 @@ export const TOOLS: Tool[] = [
     popular: true,
     iconName: "QrCode",
     aboutTitle: "About QR Code Generator",
-    aboutText: "Create crisp, high-resolution QR codes for links, plain text, Wi-Fi access, and contact cards instantly.",
+    aboutText:
+      "Create crisp, high-resolution QR codes for links, plain text, Wi-Fi access, and contact cards instantly.",
     features: [
       "High-res PNG & SVG downloads",
       "Custom size options",
@@ -472,7 +389,8 @@ export const TOOLS: Tool[] = [
     slug: "svg-to-png",
     iconName: "ImageDown",
     aboutTitle: "About SVG to PNG",
-    aboutText: "Render vector SVG graphics onto a high-resolution raster canvas and download clean transparent PNGs.",
+    aboutText:
+      "Render vector SVG graphics onto a high-resolution raster canvas and download clean transparent PNGs.",
     features: [
       "Custom resolution scale",
       "Preserves transparency",
@@ -492,7 +410,8 @@ export const TOOLS: Tool[] = [
     popular: true,
     iconName: "FileUp",
     aboutTitle: "About PDF Merger",
-    aboutText: "Combine separate PDF files into one neatly organized document in seconds.",
+    aboutText:
+      "Combine separate PDF files into one neatly organized document in seconds.",
     features: [
       "Drag-and-drop file reordering",
       "Fast client-side merge",
@@ -510,7 +429,8 @@ export const TOOLS: Tool[] = [
     slug: "pdf-to-jpg",
     iconName: "FileImage",
     aboutTitle: "About PDF to JPG",
-    aboutText: "Extract pages from PDF files and export them as high-quality individual JPEG or ZIP archives.",
+    aboutText:
+      "Extract pages from PDF files and export them as high-quality individual JPEG or ZIP archives.",
     features: [
       "High DPI page rendering",
       "Multi-page batch export",
@@ -529,7 +449,8 @@ export const TOOLS: Tool[] = [
     slug: "unit-converter",
     iconName: "Scale",
     aboutTitle: "About Unit Converter",
-    aboutText: "Convert between metric and imperial measurements with precision across length, mass, volume, temperature, and speed.",
+    aboutText:
+      "Convert between metric and imperial measurements with precision across length, mass, volume, temperature, and speed.",
     features: [
       "Metric & imperial conversions",
       "Real-time calculations",
@@ -547,7 +468,8 @@ export const TOOLS: Tool[] = [
     slug: "currency-converter",
     iconName: "Coins",
     aboutTitle: "About Currency Converter",
-    aboutText: "Convert between 150+ world currencies with up-to-date indicative exchange rates.",
+    aboutText:
+      "Convert between 150+ world currencies with up-to-date indicative exchange rates.",
     features: [
       "150+ world currencies",
       "Instant two-way conversion",
@@ -566,7 +488,8 @@ export const TOOLS: Tool[] = [
     slug: "scientific-calculator",
     iconName: "Calculator",
     aboutTitle: "About Scientific Calculator",
-    aboutText: "Execute complex mathematical expressions, trigonometry, logarithms, exponentials, and algebra.",
+    aboutText:
+      "Execute complex mathematical expressions, trigonometry, logarithms, exponentials, and algebra.",
     features: [
       "Trigonometric & logarithmic functions",
       "Calculation history tape",
@@ -584,7 +507,8 @@ export const TOOLS: Tool[] = [
     slug: "loan-calculator",
     iconName: "Percent",
     aboutTitle: "About Loan Calculator",
-    aboutText: "Calculate monthly loan EMI installments, total interest payable, and generate amortization schedules.",
+    aboutText:
+      "Calculate monthly loan EMI installments, total interest payable, and generate amortization schedules.",
     features: [
       "Monthly EMI calculation",
       "Principal vs Interest breakdown",
@@ -603,7 +527,8 @@ export const TOOLS: Tool[] = [
     slug: "seo-meta-checker",
     iconName: "Search",
     aboutTitle: "About SEO Meta Tag Checker",
-    aboutText: "Check open graph tags, meta descriptions, title lengths, and canonical tags for search engine optimization.",
+    aboutText:
+      "Check open graph tags, meta descriptions, title lengths, and canonical tags for search engine optimization.",
     features: [
       "Google SERP snippet preview",
       "Social Open Graph preview",
@@ -621,33 +546,24 @@ export const TOOLS: Tool[] = [
     slug: "dns-lookup",
     iconName: "Network",
     aboutTitle: "About DNS Lookup Checker",
-    aboutText: "Inspect DNS zone records including A, AAAA, CNAME, MX, TXT, and NS records for any hostname.",
+    aboutText:
+      "Inspect DNS zone records including A, AAAA, CNAME, MX, TXT, and NS records for any hostname.",
     features: [
       "A, AAAA, MX, TXT, NS records",
       "Fast DNS resolution",
       "TTL and priority details",
-      "One-click copy",
     ],
   },
 ];
 
-export function getToolBySlug(slug: string): Tool | undefined {
-  return TOOLS.find((t) => t.slug === slug || t.id === slug);
-}
+export {
+  getToolBySlug,
+  getCategoryById,
+  getCategoryBySlug,
+  getToolsByCategory,
+  getAllCategories,
+  getAllTools,
+  getRelatedTools,
+  searchTools,
+} from "@/lib/tools";
 
-export function getCategoryById(id: string): Category | undefined {
-  return CATEGORIES.find((c) => c.id === id);
-}
-
-export function getCategoryBySlug(slug: string): Category | undefined {
-  return CATEGORIES.find((c) => c.id === slug);
-}
-
-export function getToolsByCategory(categoryNameOrSlug: string): Tool[] {
-  return TOOLS.filter(
-    (t) =>
-      t.category.toLowerCase() === categoryNameOrSlug.toLowerCase() ||
-      t.categorySlug === categoryNameOrSlug ||
-      t.category.toLowerCase().replace(/\s+/g, "-") === categoryNameOrSlug.toLowerCase()
-  );
-}

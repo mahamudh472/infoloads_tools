@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { UIProvider } from "@/context/UIContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "InfoLoads - Everyday tools, simplified.",
-  description: "Free, fast and easy-to-use tools to solve your daily digital problems. Format JSON, count words, generate QR codes, encode Base64 and more.",
+  description:
+    "Free, fast and easy-to-use tools to solve your daily digital problems. Format JSON, count words, generate QR codes, encode Base64 and more.",
 };
 
 export default function RootLayout({
@@ -34,7 +36,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <UIProvider>{children}</UIProvider>
+      </body>
     </html>
   );
 }

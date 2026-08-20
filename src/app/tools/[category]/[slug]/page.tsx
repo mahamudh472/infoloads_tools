@@ -1,8 +1,9 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import ToolPageView from "@/components/ToolPageView";
-import { getToolBySlug, TOOLS } from "@/data/tools";
+import ToolPageView from "@/components/tools/ToolPageView";
+import { TOOLS } from "@/data/tools";
+import { getToolBySlug } from "@/lib/tools";
 
 interface Props {
   params: Promise<{
