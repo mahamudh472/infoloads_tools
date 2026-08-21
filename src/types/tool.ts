@@ -1,3 +1,20 @@
+export type ToolWorkspaceType =
+  | "code"
+  | "markdown"
+  | "word-counter"
+  | "case-converter"
+  | "image-compressor"
+  | "qr-code"
+  | "svg-to-png"
+  | "unit-converter"
+  | "currency-converter"
+  | "scientific-calculator"
+  | "loan-calculator"
+  | "seo-meta"
+  | "dns-lookup"
+  | "pdf-merger"
+  | "pdf-to-jpg";
+
 export interface Tool {
   id: string;
   name: string;
@@ -13,6 +30,7 @@ export interface Tool {
   aboutText?: string;
   features?: string[];
   sampleInput?: string;
+  workspaceType?: ToolWorkspaceType;
 }
 
 export interface Category {
@@ -33,3 +51,4 @@ export interface CategoryWithTools extends Category {
   tools: Tool[];
   totalCount: number;
 }
+

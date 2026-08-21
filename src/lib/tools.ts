@@ -61,3 +61,70 @@ export function searchTools(query: string, categoryFilter = "all"): Tool[] {
     );
   });
 }
+
+export function getToolWorkspaceType(tool: Tool): import("@/types/tool").ToolWorkspaceType {
+  if (tool.workspaceType) {
+    return tool.workspaceType;
+  }
+
+  switch (tool.id) {
+    case "markdown-previewer":
+      return "markdown";
+    case "word-counter":
+      return "word-counter";
+    case "case-converter":
+      return "case-converter";
+    case "image-compressor":
+      return "image-compressor";
+    case "qr-code-generator":
+      return "qr-code";
+    case "svg-to-png":
+      return "svg-to-png";
+    case "unit-converter":
+      return "unit-converter";
+    case "currency-converter":
+      return "currency-converter";
+    case "scientific-calculator":
+      return "scientific-calculator";
+    case "loan-calculator":
+      return "loan-calculator";
+    case "seo-meta-checker":
+      return "seo-meta";
+    case "dns-lookup":
+      return "dns-lookup";
+    case "pdf-merger":
+      return "pdf-merger";
+    case "pdf-to-jpg":
+      return "pdf-to-jpg";
+  }
+
+  // Check category or ID patterns
+  if (tool.categorySlug === "image-tools" || tool.category === "Image Tools") {
+    if (tool.id.includes("qr")) return "qr-code";
+    if (tool.id.includes("svg")) return "svg-to-png";
+    return "image-compressor";
+  }
+
+  if (tool.categorySlug === "pdf-tools" || tool.category === "PDF Tools") {
+    if (tool.id.includes("jpg") || tool.id.includes("image")) return "pdf-to-jpg";
+    return "pdf-merger";
+  }
+
+  if (tool.categorySlug === "converters" || tool.category === "Converters") {
+    if (tool.id.includes("currency")) return "currency-converter";
+    return "unit-converter";
+  }
+
+  if (tool.categorySlug === "calculators" || tool.category === "Calculators") {
+    if (tool.id.includes("loan") || tool.id.includes("emi")) return "loan-calculator";
+    return "scientific-calculator";
+  }
+
+  if (tool.categorySlug === "web-tools" || tool.category === "Web Tools") {
+    if (tool.id.includes("dns")) return "dns-lookup";
+    return "seo-meta";
+  }
+
+  // Default to developer code workspace (e.g. JSON, Base64, URL, HTML, CSS, JS, XML)
+  return "code";
+}

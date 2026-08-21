@@ -2,6 +2,8 @@
 
 import React, { useMemo } from "react";
 
+import { handleTextareaTabKey } from "@/lib/utils/keyboard";
+
 interface ToolEditorPanelProps {
   title: string;
   value: string;
@@ -29,6 +31,15 @@ export default function ToolEditorPanel({
     return Array.from({ length: linesCount }, (_, i) => i + 1);
   }, [value]);
 
+  const handleKeyDownInternal = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+    if (!e.defaultPrevented && e.key === "Tab" && !readOnly) {
+      handleTextareaTabKey(e, onChange);
+    }
+  };
+
   return (
     <div className="rounded-xl border border-gray-200/90 dark:border-gray-800 bg-white dark:bg-[#0f131c] shadow-xs overflow-hidden">
       {/* Panel Header */}
@@ -53,7 +64,7 @@ export default function ToolEditorPanel({
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
-          onKeyDown={onKeyDown}
+          onKeyDown={handleKeyDownInternal}
           readOnly={readOnly}
           placeholder={placeholder}
           spellCheck={false}

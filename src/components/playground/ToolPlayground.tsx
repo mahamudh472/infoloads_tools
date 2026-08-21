@@ -6,6 +6,7 @@ import { X, Copy, Trash2, Check, Sparkles } from "lucide-react";
 import { getToolBySlug } from "@/lib/tools";
 import { executeTool } from "@/lib/engines";
 import { useClipboard } from "@/hooks/useClipboard";
+import { handleTextareaTabKey } from "@/lib/utils/keyboard";
 
 interface ToolPlaygroundProps {
   toolId: string | null;
@@ -172,6 +173,7 @@ export default function ToolPlayground({ toolId, onClose }: ToolPlaygroundProps)
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
+                  onKeyDown={(e) => handleTextareaTabKey(e, setInputText, 2)}
                   placeholder="Paste or type content here..."
                   className="w-full h-32 mt-1 rounded-xl border border-border bg-muted/20 p-3 font-mono text-xs focus:outline-none"
                 />

@@ -6,6 +6,7 @@ import { downloadFile, readFileAsText } from "@/lib/utils/file";
 import { getFileExtensionForTool } from "@/lib/utils/formatters";
 import { IndentOption, Tool, ToolAction } from "@/types/tool";
 import { useClipboard } from "./useClipboard";
+import { handleTextareaTabKey } from "@/lib/utils/keyboard";
 
 export function useToolExecution(tool: Tool) {
   const [currentToolId, setCurrentToolId] = useState(tool.id);
@@ -88,16 +89,11 @@ export function useToolExecution(tool: Tool) {
   // Handle Tab key indentation in textarea
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Tab") {
-      e.preventDefault();
-      const textarea = e.currentTarget;
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const spaces = "  ";
-      const newValue = inputText.substring(0, start) + spaces + inputText.substring(end);
-      setInputText(newValue);
-      setTimeout(() => {
-        textarea.selectionStart = textarea.selectionEnd = start + spaces.length;
-      }, 0);
+      const spaceCount = indentSize === "tab" ? 2 : indentSize;
+      handleTextareaTabKey(e, (val) => {
+        setInputText(val);
+        executeAction("format", val, indentSize, sortKeys);
+      }, spaceCount);
     }
   };
 
