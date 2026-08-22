@@ -13,10 +13,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tools.infoloads.com";
+
 export const metadata: Metadata = {
-  title: "InfoLoads - Everyday tools, simplified.",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "InfoLoads - Everyday tools, simplified.",
+    template: "%s | InfoLoads",
+  },
   description:
     "Free, fast and easy-to-use tools to solve your daily digital problems. Format JSON, count words, generate QR codes, encode Base64 and more.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
